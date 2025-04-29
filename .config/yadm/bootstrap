@@ -1,0 +1,35 @@
+#!/bin/bash
+## vim: set ft=sh sw=2 et :
+
+MY_TOOLS_DIR="${HOME}/tools"
+
+function configure_vim() {
+    echo "configure_vim"
+
+    local vim_vundle_dir="${HOME}/.vim/bundle/Vundle.vim"
+
+    if [ ! -d "${vim_vundle_dir}" ]; then
+      git clone https://github.com/VundleVim/Vundle.vim.git "${vim_vundle_dir}"
+    fi
+}
+
+function configure_cz() {
+    echo "configure_cz"
+    if ! command -v npm &> /dev/null; then
+        echo "  no npm found, skip..."
+        return
+    fi
+    npm install -g commitizen
+    npm install -g cz-conventional-changelog
+}
+
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Linux" ]; then
+    configure_vim;
+    configure_cz
+else
+    configure_vim;
+fi
+
