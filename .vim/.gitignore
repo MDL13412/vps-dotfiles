@@ -1,0 +1,9 @@
+*.pyc
+*.pyo
+doc/tags
+*.dll
+*.so
+*.a
+*.pyd
+
+bundle/

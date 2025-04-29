@@ -1,0 +1,30 @@
+:set winsplit=top_full
+:set winminheight=20
+:set arrowstyle=highlight
+
+:set tabstop=4
+
+:map r :run<CR>
+:map c :continue<CR>
+:map f :finish<CR>
+:map n :next<CR>
+:map s :step<CR>
+
+:unm <F1>
+:unm <F2>
+:unm <F3>
+:unm <F4>
+:unm <F5>
+:unm <F6>
+:unm <F7>
+:unm <F8>
+:unm <F9>
+:unm <F10>
+:unm <F11>
+:unm <F12>
+
+map <F5> :start<CR>
+map <F6> :continue<CR>
+map <F7> :step<CR>
+map <F8> :next<CR>
+map <F9> :finish<CR>

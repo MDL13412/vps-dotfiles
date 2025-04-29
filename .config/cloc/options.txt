@@ -1,0 +1,3 @@
+--exclude-dir=.venv,venv,vendor
+--exclude-ext=pb.go,gen.go
+
