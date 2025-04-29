@@ -34,6 +34,7 @@
 	rebase = true
 [user]
 	name = MDL13412
+	email = mdl2009@vip.qq.com
 [init]
 	defaultBranch = master
 [delta]
