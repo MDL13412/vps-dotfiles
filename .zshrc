@@ -200,7 +200,7 @@ alias vimvimrc='vim ~/.vimrc'
 
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
-export PATH="$HOME/.local/bin:$HOME/bin:$GOBIN:/usr/local/sbin:/usr/local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/bin:/home/linuxbrew/.linuxbrew/bin:$GOBIN:/usr/local/sbin:/usr/local/bin:$PATH"
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
