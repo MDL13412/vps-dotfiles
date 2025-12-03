@@ -196,7 +196,11 @@ call vundle#end()
 
     "{{{ shell
         augroup vimrc-lang-shell
-            set foldmethod=manual
+            autocmd!
+            " set foldmethod=manual
+            autocmd FileType sh,bash,zsh setlocal foldmethod=marker
+            autocmd FileType sh,bash,zsh setlocal foldmarker={{{,}}}
+            autocmd FileType sh,bash,zsh setlocal foldlevel=0
         augroup END
     "}}}
 

@@ -1,3 +1,5 @@
+# # vim: set ft=zsh fdm=marker ff=unix fileencoding=utf-8:
+#
 # https://github.com/dreamsofautonomy/zensh
 export GPG_TTY=$(tty)
 
@@ -7,6 +9,17 @@ export GPG_TTY=$(tty)
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+
+#{{{ homebrew
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
+export PATH="$HOME/.local/bin:$HOME/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$GOBIN:/usr/local/sbin:/usr/local/bin:$PATH"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
+
+fpath=(${HOMEBREW_PREFIX}/share/zsh/site-functions $fpath)
+#}}}
 
 export WORDCHARS='';
 
@@ -19,7 +32,9 @@ export SAVEHIST=10000
 # 忽略一些命令
 export HISTORY_IGNORE="(ls|ll|cd|pwd|exit)*"
 export HISTDUP=erase
+export HISTFILE="${HOME}/.zsh_history"
 
+#{{{ zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 if [ ! -d "$ZINIT_HOME" ]; then
@@ -40,6 +55,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-history-substring-search
 zinit light Aloxaf/fzf-tab
 zinit light paulirish/git-open
+zinit light junegunn/fzf-git.sh
 
 # Add in snippets
 zinit snippet OMZP::pip
@@ -49,6 +65,7 @@ zinit snippet OMZP::extract
 autoload -Uz compinit && compinit
 
 zinit cdreplay -q
+#}}}
 
 # Keybindings
 bindkey -e
@@ -137,9 +154,9 @@ alias yp='yadm push'
 
 # Shell integrations
 # NOTE: 低版本不支持 --zsh 参数 (需要: 0.48.0+)
-# eval "$(fzf --zsh)"
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+eval "$(fzf --zsh)"
+#source /usr/share/doc/fzf/examples/key-bindings.zsh
+#source /usr/share/doc/fzf/examples/completion.zsh
 eval "$(direnv hook zsh)"
 
 function take() {
@@ -200,7 +217,6 @@ alias vimvimrc='vim ~/.vimrc'
 
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
-export PATH="$HOME/.local/bin:$HOME/bin:/home/linuxbrew/.linuxbrew/bin:$GOBIN:/usr/local/sbin:/usr/local/bin:$PATH"
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
