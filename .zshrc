@@ -1,5 +1,7 @@
 # vim: set ft=zsh fdm=marker ff=unix fileencoding=utf-8:
 
+" homebrew 安装的 fzf 跟 fzf-tab 不兼容, 需要手工拷贝到 /usr/local/bin/fzf
+
 export GPG_TTY=$(tty)
 
 #zmodload zsh/zprof
@@ -336,8 +338,10 @@ eval "$(mcfly init zsh)"
 #{{{ SCM Breeze 替代
 fzf-or-complete() {
   if (( $+widgets[fzf-completion] )); then
+    nslib_debug "fzf-completion"
     zle fzf-completion
   else
+    nslib_debug "expand-or-complete"
     zle expand-or-complete
   fi
 }
